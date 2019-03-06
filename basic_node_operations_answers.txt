@@ -1,0 +1,130 @@
+1. Run the commands sort, wc and uniq on the commands.js file. Explain how they work and what the output was.
+
+Sort returned the contents of commands.js, sorted alphabetically by line.
+        $ sort commands.js
+              break;
+              break;
+              commandLibrary.cat(userInputArray.slice(1));
+              commandLibrary.echo(userInputArray.slice(1).join(" "));
+              done(data);
+              if (err) throw err;
+            });
+            case "cat":
+            case "echo":
+            const fileName = fullPath[0];
+            done(userInput);
+            fs.readFile(fileName, (err, data) => {
+          "cat": function(fullPath) {
+          "echo": function(userInput) {
+          // parses the user input to understand which command was typed
+          // the cat command
+          // the echo command
+          }
+          }
+          },
+          const command = userInputArray[0];
+          const userInputArray = userInput.split(" ");
+          process.stdin.write('\nprompt >');
+          process.stdout.write(output);
+          switch (command) {
+
+
+
+
+
+
+        }
+        }
+        };
+        const commandLibrary = { // where we will store the logic of our commands
+        const fs = require('fs');
+        function done(output) { // write out data
+        function evalutateCmd(userInput) { // where we will store our commands
+        module.exports.commandLibrary = commandLibrary;
+        module.exports.evalutateCmd = evalutateCmd;
+
+Wc prints the line count, word count, and character count in the command.js file.
+        $ wc commands.js
+          40  112 1037 commands.js
+
+Uniq sorts through each line in the command.js file, removes same lines from an output, and returns the remaining lines (only those that are different lines).
+        $ uniq commands.js
+        const fs = require('fs');
+
+        function done(output) { // write out data
+          process.stdout.write(output);
+          process.stdin.write('\nprompt >');
+        }
+
+        function evalutateCmd(userInput) { // where we will store our commands
+          // parses the user input to understand which command was typed
+          const userInputArray = userInput.split(" ");
+          const command = userInputArray[0];
+
+          switch (command) {
+            case "echo":
+              commandLibrary.echo(userInputArray.slice(1).join(" "));
+              break;
+            case "cat":
+              commandLibrary.cat(userInputArray.slice(1));
+              break;
+          }
+        }
+
+        const commandLibrary = { // where we will store the logic of our commands
+          // the echo command
+          "echo": function(userInput) {
+            done(userInput);
+          },
+
+          // the cat command
+          "cat": function(fullPath) {
+            const fileName = fullPath[0];
+            fs.readFile(fileName, (err, data) => {
+              if (err) throw err;
+              done(data);
+            });
+          }
+        };
+
+        module.exports.commandLibrary = commandLibrary;
+        module.exports.evalutateCmd = evalutateCmd;
+
+=========================================================================================================================================================
+
+2. Using the pipe (|) connect at least two commands and run it on commands.js. Explain what the output was and why the specific data was outputted.
+        $ uniq commands.js | wc
+             40     112    1037
+
+The above output shows the line, word, and character count in the commands.js file. This data was outputted, because wc was the output command I used. Uniq commands.js would have output the contents of the file with the duplicate lines removed. This serves as an input to the next command, wc.
+
+=========================================================================================================================================================
+
+6. Given a string, reverse the order of characters in each word within a sentence while maintaining the original word order and whitespace and return the string. To improve your problem-solving experience, use the suggested functions to solve the problem.
+Example // Input: "I'm learning to program algorithms!"
+           Output: "m'I gninrael ot margorp !smhtirogla"
+
+        function reverseString(inputString) {
+          var splitStr = inputString.split('');
+          //converts string to array
+          //[I, ', m, " ", ...]
+
+          var revStr = splitStr.reverse();
+          //reverses new array (splitStr)
+
+          var joinStr = revStr.join('');
+          //converts array (revStr) to string
+
+          var newSplit = joinStr.split(' ');
+          //converts string (joinStr) to array with spaces
+
+          var newRev = newSplit.reverse();
+          //reverses new array (newSplit)
+
+          var newJoin = newRev.join(' ');
+          //converts array (newRev) to string with spaces
+
+          return newJoin;
+        }
+
+        console.log(reverseString("I'm learning to program algorithms!"));
